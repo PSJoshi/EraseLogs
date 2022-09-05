@@ -1,4 +1,5 @@
-In Linux, the following log files are commonly used:
+### Commonly used log files
+The following log files are commonly used in linux environment:
 * /var/log/messages # General message and system related stuff
 * /var/log/auth.log # Authenication logs
 * /var/log/kern.log # Kernel logs
