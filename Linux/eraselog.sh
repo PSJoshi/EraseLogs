@@ -65,3 +65,17 @@ function disableHistory () {
         echo
         echo "Permenently disabled bash log."
 }
+
+echo " Changing directory to /var/log..."
+cd /var/log
+truncate -s 0 /var/log/*log
+find . -name "*.gz" -type f -delete
+find . -name "*.0" -type f -delete
+find . -name "*.1" -type f -delete
+find . -name "*.log.*" -type f -delete
+# clear logs to erase traces of activities
+cat /dev/null > /var/log/messages
+cat /dev/null > /var/log/maillog
+cat /dev/null > /var/log/secure
+for logs in `find /var/log -type f`; do > $logs; done
+echo "All logs cleared"
