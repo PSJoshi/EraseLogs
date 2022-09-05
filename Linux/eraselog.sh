@@ -66,6 +66,46 @@ function disableHistory () {
         echo "Permenently disabled bash log."
 }
 
+LOGS_FILES=(
+        /var/log/messages # General message and system related stuff
+        /var/log/auth.log # Authenication logs
+        /var/log/kern.log # Kernel logs
+        /var/log/cron.log # Crond logs
+        /var/log/maillog # Mail server logs
+        /var/log/boot.log # System boot log
+        /var/log/mysqld.log # MySQL database server log file
+        /var/log/qmail # Qmail log directory
+        /var/log/httpd # Apache access and error logs directory
+        /var/log/lighttpd # Lighttpd access and error logs directory
+        /var/log/secure # Authentication log
+        /var/log/utmp # Login records file
+        /var/log/wtmp # Login records file
+        /var/log/yum.log # Yum command log file
+        /var/log/system.log # System Log
+)
+
+function clearLogs () {
+        for i in "${LOGS_FILES[@]}"
+        do
+                if [ -f "$i" ]; then
+                        if [ -w "$i" ]; then
+                                echo "" > "$i"
+                                echo "[+] $i cleaned."
+                        else
+                                echo "[!] $i is not writable! Retry using sudo."
+                        fi
+                elif [ -d "$i" ]; then
+                        if [ -w "$i" ]; then
+                                rm -rf "${i:?}"/*
+                                echo "[+] $i cleaned."
+                        else
+                                echo "[!] $i is not writable! Retry using sudo."
+                        fi
+                fi
+        done
+}
+
+
 echo " Changing directory to /var/log..."
 cd /var/log
 truncate -s 0 /var/log/*log
