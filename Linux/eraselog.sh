@@ -1,6 +1,6 @@
 #!/bin/bash
 
-clearlog(){
+clear_history(){
     export HISTFILE=
     unset HISTFILE
     shred -zu ~/.bash_history
@@ -22,7 +22,7 @@ function isRoot () {
     fi
 }
 
-function enableHistory () {
+function enable_history () {
         if [[ -L ~/.bash_history ]]; then
                 rm -rf ~/.bash_history
                 echo "" > ~/.bash_history
@@ -46,7 +46,7 @@ function enableHistory () {
         echo "Permenently enabled bash log."
 }
 
-function disableHistory () {
+function disable_history () {
         ln /dev/null ~/.bash_history -sf
         echo "[+] Permanently sending bash_history to /dev/null"
 
