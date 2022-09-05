@@ -45,4 +45,6 @@ Shredding files lets you remove files in a more secure way.
 ```
 # shred -zu filename
 ```
+Thanks for the following git repositories for allowing me to experiment and get my own version!
+* https://github.com/sundowndev/covermyass
 
