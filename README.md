@@ -13,6 +13,23 @@ If there are failed and successful login attempts using sudo, ssh services, look
 ```
 /var/log/auth.log
 ```
+#### Important logs
+```
+$ WTMP      # Every log on/off, with login/logout time plus tty and host
+$ UTMP      # Who is online at the moment
+$ LASTLOG   # Where did the logins come from 
+```
+#### Location of logs
+```
+UTMP : /etc or /var/adm or /usr/adm or /usr/var/adm or /var/log
+
+WTMP : /etc or /var/adm or /usr/adm or /usr/var/adm or /var/log
+
+LASTLOG : /usr/var/adm or /usr/adm or /var/adm or /var/log
+
+NOTICE: The location depends on UNIX distribution
+```
+
 ### Hiding your ip traces
 If you wish to remove your own ip being logged, you can use:
 ```
@@ -47,4 +64,4 @@ Shredding files lets you remove files in a more secure way.
 ```
 Thanks for the following git repositories for allowing me to experiment and get my own version!
 * https://github.com/sundowndev/covermyass
-
+* https://github.com/bafbomb/ortbot
