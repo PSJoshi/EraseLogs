@@ -105,6 +105,22 @@ function clearLogs () {
         done
 }
 
+echo " Welcome to Erase Logs tool..."
+echo "This script will erase all your system and application logs on the system. So, Be careful!!"
+echo "It is presumed that you know what you are doing and are ready to accept the risk and consequences!!"
+echo 
+read -p "Continue.. Press 'Y'to proceed or 'N' to quit   " option 
+echo
+case $option in
+	y ) echo "Proceeding to erase logs...";
+		clearlogs;
+		clear_history;
+		exit;;
+	n ) echo "Quitting..";
+		exit;;
+	* ) echo "Invalid response";
+		exit 1;;
+esac
 
 echo " Changing directory to /var/log..."
 cd /var/log
